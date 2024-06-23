@@ -71,3 +71,9 @@ table {
 	display: flex;
 	flex-wrap: wrap;
 }
+.filter-btn{
+	padding: 10px;
+	background-color: black;
+	color: white;
+	cursor: pointer;
+}
