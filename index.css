@@ -67,13 +67,76 @@ table {
 .res-card img{
 	width: 200px;
 }
-.res-container{
+.res-container, .shimmer-container{
 	display: flex;
 	flex-wrap: wrap;
 }
+.filter-wrap{
+	margin-top: 15px;
+	margin-left: 10px;
+	display: flex;
+}
 .filter-btn{
-	padding: 10px;
-	background-color: black;
-	color: white;
 	cursor: pointer;
+	margin-left: 20px;
+}
+/* SHimerUI */
+.shimmer-container{margin-top: 35px;}
+.shimmer-card{
+    width: 200px;
+	height: 300px;
+    background-color: rgb(219, 214, 214);
+	margin: 10px;
+}
+.shimmer-main{
+  display:flex;
+  flex-wrap: wrap;
+}
+.shimmer-card-box{
+  width:200px;
+  border-radius:10px;
+  height:300px;
+  box-shadow:1px 1px 10px lightgray;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  margin: 10px;
+}
+.shimmer-header{
+  width:100%;
+  height:70%;
+  border-radius:10px;
+  overflow:hidden;
+}
+.header-box{
+  width:100%;
+  height:100%;
+}
+.shimmer-body{
+  width:100%;
+}
+.line{
+  width:100%;
+  height:20px;
+  margin-top:10px;
+  background: #f6f7f8;
+}
+.line:last-child{
+  width:60%;
+}
+.shimmer-class{
+  background: #f6f7f8;
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  animation:shimmer 1s linear infinite;
+}
+@keyframes shimmer{
+  0% {
+    background-position: -468px 0;
+  }
+  
+  100% {
+    background-position: 468px 0; 
+  }
 }
