@@ -140,3 +140,12 @@ table {
     background-position: 468px 0; 
   }
 }
+
+.about .user-card, .userclass-card{
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+  margin: 10px;
+  line-height: 20px;
+}
