@@ -1,8 +1,9 @@
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard, {withPromotedLabel,isOpenLabel} from "./RestaurentCard";
 import resList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/userContex";
 
 
 
@@ -10,6 +11,14 @@ const Body = () => {
     const [listOfRestaurents, setLisOfRestaurents] = useState([]);
     const [filterRestaurents, setFilterRestaurents] = useState([]);
     const [searchText, setSearchText] = useState("");
+
+    // const RestaurantCardPromoted = withPromotedLabel(RestaurentCard)
+    const OpenRestaurant = isOpenLabel(RestaurentCard)
+
+    // context data for loggedIUserName
+    const {loggedInUser, setUserName} = useContext(UserContext)
+
+    // console.log(loggedInUser)
     
     useEffect(() => {
         fetchData();
@@ -28,7 +37,8 @@ const Body = () => {
         <div className="wrapper">
             <div className="filter-wrap">
                 <div>
-                    <input type="text"
+                    <input className=" border-solid border-2 border-black"
+                    type="text"
                     value={searchText}
                     onChange={(e) => {
                         setSearchText(e.target.value)
@@ -48,16 +58,32 @@ const Body = () => {
                 <button className="filter-btn" 
                 onClick={() => {
                     const filteredList = listOfRestaurents.filter(
-                        (res) => res.info.avgRating > 4.2
+                        (res) => res.info.avgRating > 4.1
                     );
                     setLisOfRestaurents(filteredList)
-                }}>Top Rated Restaurents</button>
+                }}>Rating 4+</button>
+                <label>User Name : </label>
+                <input className=" border border-black"
+                    type="text"
+                    value={loggedInUser}
+                    onChange={(e) => {
+                        setUserName(e.target.value)
+                        // console.log(e.target.value)
+                    }}
+                />
             </div>
             <div className="res-container">
                 {/* <RestaurentCard resData={resList[0]} /> */}
                 {
                     listOfRestaurents.map((restaurent) =>
-                   <Link to={`restaurants/${restaurent.info.id}`} key={restaurent.info.id}> <RestaurentCard resData={restaurent}/> </Link>
+                   <Link
+                     to={`restaurants/${restaurent.info.id}`}
+                     key={restaurent.info.id}>
+                        {
+                            // But in this API we dont have promoted lable object
+                            restaurent.info.isOpen ? ( <OpenRestaurant resData={restaurent}/>) : ( <RestaurentCard resData={restaurent}/> )
+                        }
+                    </Link>
                 )
                 }
             </div>

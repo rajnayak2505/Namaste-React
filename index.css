@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -97,6 +101,16 @@ table {
     background-color: aliceblue;
 	  margin: 10px;
 }
+.open-label{
+  position: relative;
+}
+.open-label label{
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  left: 10px;
+}
 .res-card img{
 	width: 200px;
   height: 236px;
@@ -115,7 +129,7 @@ table {
 }
 .res-card h5{
   border: 1px solid gray;
-  width: 42px;
+  width: 65px;
   margin: 10px;
 
 }
